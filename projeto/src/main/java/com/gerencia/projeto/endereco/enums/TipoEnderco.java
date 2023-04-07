@@ -1,4 +1,4 @@
-package com.teste.TesteBackend.modules.endereco.enums;
+package com.gerencia.projeto.endereco.enums;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
