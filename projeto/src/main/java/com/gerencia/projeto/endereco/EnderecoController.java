@@ -24,11 +24,13 @@ public class EnderecoController {
     @Autowired
     private EnderecoRepository enderecoRepository;
 
+    // Criar um novo endereço 
     @PostMapping
     public ResponseEntity<Endereco> criarEndereco( @RequestBody Endereco endereco) {
         return ResponseEntity.ok().body(enderecoRepository.save(endereco));
     }
 
+    // Listar todos os edereços da pessoa 
     @GetMapping("/pessoa/{id}")
     public ResponseEntity <List<Endereco>> listarEnderecosPessoa(@PathVariable long id) {
 
@@ -40,6 +42,7 @@ public class EnderecoController {
         return ResponseEntity.ok().body(enderecos);  
     }
 
+    // Buscar o endereço princiapl da pessoa
     @GetMapping("/principal/pessoa/{id}")
     public ResponseEntity <Endereco> getEnderecoPrincipalPessoa(@PathVariable long id) {
 

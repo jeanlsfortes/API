@@ -28,6 +28,7 @@ public class PessoaController {
         return ResponseEntity.ok().body(pessoaRepository.save(pessoa));
     }
 
+    // Método para editar uma pessoa já cadastrada no banco
     @PutMapping("/{id}")
     public ResponseEntity<Pessoa> editar(@PathVariable Long id, @RequestBody Pessoa pessoa) {
         return pessoaRepository.findById(id).map(pessoaAntiga -> {
@@ -38,12 +39,14 @@ public class PessoaController {
         }).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Pessoa Não Encontrada"));
     }
 
+    // Método para consultar uma pessoa já cadastrada no banco
     @GetMapping("/{id}")
     public ResponseEntity<Pessoa> consultar(@PathVariable Long id) {
         return ResponseEntity.ok(pessoaRepository.findById(id)
             .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Pessoa Não Encontrada")));   
     }
 
+    // Listar todas as pessoas 
     @GetMapping
     public ResponseEntity<List<Pessoa>> listar() {
         return ResponseEntity.ok(pessoaRepository.findAll());
